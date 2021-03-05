@@ -25,7 +25,15 @@
 <?php else: ?>
 <a href="<?= ROOT ?>cart/addproduct/<?= $data['data']->id ?>/<?= $data['user_id'] ?>" class="btn btn-info">Comprar</a>
 <?php endif;?>
+<?php $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+<?php if (substr($url,-5,5) == 'books'){
+    $texto = "Volver al listado de libros";
+}elseif (substr($url,-7,7) == 'courses') {
+    $texto = "Volver al listado de cursos";
+}else{
+    $texto = "Volver al listado de productos";
+}?>
 <a href="<?= ROOT . ((empty($data['back'])) ? 'shop' : $data['back'] ) ?>" class="btn btn-success">
-    Volver al listado de productos
+    <?= $texto ?>
 </a>
 <?php include_once (VIEWS.'footer.php')?>
