@@ -20,7 +20,11 @@
     <h4>Resumen:</h4>
     <?= html_entity_decode($data['data']->description) ?>
 <?php endif ?>
+<?php if(!isset($_SESSION['user'])): ?>
+<a href="<?= ROOT ?>login" class="btn btn-info">Iniciar Sesion</a>
+<?php else: ?>
 <a href="<?= ROOT ?>cart/addproduct/<?= $data['data']->id ?>/<?= $data['user_id'] ?>" class="btn btn-info">Comprar</a>
+<?php endif;?>
 <a href="<?= ROOT . ((empty($data['back'])) ? 'shop' : $data['back'] ) ?>" class="btn btn-success">
     Volver al listado de productos
 </a>

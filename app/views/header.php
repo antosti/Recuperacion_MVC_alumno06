@@ -16,7 +16,7 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a href="<?= ROOT ?>shop" class="navbar-brand">Tienda</a>
     <div class="collapse navbar-collapse" id="menu">
-        <?php if ($data['menu']) : ?>
+        <?php if ($data['menu'] && isset($_SESSION['user'])) : ?>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
                     <a href="<?= ROOT.'courses' ?>" class="nav-link
@@ -60,6 +60,20 @@
                     <a href="<?= ROOT.'shop/logout' ?>" class="nav-link">Salir</a>
                 </li>
             </ul>
+        <?php endif; ?>
+        <?php if($data['menu'] && (!isset($_SESSION['user']))) :?>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a href="<?= ROOT.'login' ?>" class="nav-link">
+                    Login
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= ROOT.'login/registro' ?>" class="nav-link">
+                    Registrarse
+                </a>
+            </li>
+        </ul>
         <?php endif; ?>
         <?php if (isset($data['admin']) && $data['admin']): ?>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">

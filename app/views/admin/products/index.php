@@ -15,6 +15,7 @@
             </thead>
             <tbody>
             <?php foreach ($data['data'] as $product): ?>
+
                 <tr>
                     <td class="text-center"><?= $product->id ?></td>
                     <td class="text-center"><?= $data['type'][$product->type - 1]->description ?></td>

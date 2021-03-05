@@ -12,7 +12,7 @@ class ShopController extends Controller
     public function index()
     {
         $session = new Session();
-        if ($session->getLogin()) {
+
             $mostSold = $this->model->getMostSold();
             $news = $this->model->getNews();
             $data = [
@@ -24,26 +24,40 @@ class ShopController extends Controller
                 'news'      => $news,
             ];
             $this->view('shop/index', $data);
-        } else {
-            header('location:' . ROOT);
-        }
+
     }
 
     public function show($id, $back = '')
     {
         $session = new Session();
         $product = $this->model->getProductById($id);
-        $data = [
-            'titulo'    => 'Detalle del producto',
-            'subtitle'  => $product->name,
-            'menu'      => true,
-            'admin'     => false,
-            'back'      => $back,
-            'errors'    => [],
-            'data'      => $product,
-            'user_id'   => $session->getUserId(),
-        ];
-        $this->view('shop/show', $data);
+        if(isset($_SESSION['user']) && $_SESSION['user']){
+
+            $data = [
+                'titulo'    => 'Detalle del producto',
+                'subtitle'  => $product->name,
+                'menu'      => true,
+                'admin'     => false,
+                'back'      => $back,
+                'errors'    => [],
+                'data'      => $product,
+                'user_id'   => $session->getUserId(),
+
+            ];
+            $this->view('shop/show', $data);
+    } else{
+            $data = [
+                'titulo'    => 'Detalle del producto',
+                'subtitle'  => $product->name,
+                'menu'      => true,
+                'admin'     => false,
+                'back'      => $back,
+                'errors'    => [],
+                'data'      => $product,
+
+            ];
+            $this->view('shop/show', $data);
+        }
     }
 
     public function logout()
