@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql
--- Tiempo de generación: 27-11-2020 a las 18:50:55
--- Versión del servidor: 5.7.32
--- Versión de PHP: 7.4.11
+-- Tiempo de generación: 05-03-2021 a las 19:47:46
+-- Versión del servidor: 5.7.31
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,10 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `mvctienda`
+-- Base de datos: `alumno06`
 --
-CREATE DATABASE IF NOT EXISTS `mvctienda` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `mvctienda`;
 
 -- --------------------------------------------------------
 
@@ -47,7 +45,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `password`, `status`, `deleted`, `login_at`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Heriberto', 'heriberto@mail.es', '806cc6e9290ccac7e77a34f545b28fdf3c8a87dab0f144f3885b2411483e433df0a34d9d11355f20b74df86b9bbbe5dd95d4046be9430851b8fbdbc390dc8e54', 1, 0, '2020-11-26 16:32:42', '2020-11-06 20:15:14', '2020-11-12 16:27:07', NULL),
+(1, 'Heriberto', 'heriberto@mail.es', '806cc6e9290ccac7e77a34f545b28fdf3c8a87dab0f144f3885b2411483e433df0a34d9d11355f20b74df86b9bbbe5dd95d4046be9430851b8fbdbc390dc8e54', 1, 0, '2021-03-05 18:42:47', '2020-11-06 20:15:14', '2020-11-12 16:27:07', NULL),
 (2, 'María', 'maria@mail.es', '806cc6e9290ccac7e77a34f545b28fdf3c8a87dab0f144f3885b2411483e433df0a34d9d11355f20b74df86b9bbbe5dd95d4046be9430851b8fbdbc390dc8e54', 0, 1, NULL, '2020-11-12 14:54:40', NULL, '2020-11-13 18:16:56'),
 (3, 'Ana', 'ana@mail.es', '806cc6e9290ccac7e77a34f545b28fdf3c8a87dab0f144f3885b2411483e433df0a34d9d11355f20b74df86b9bbbe5dd95d4046be9430851b8fbdbc390dc8e54', 1, 1, '2020-11-13 18:19:22', '2020-11-13 18:18:48', NULL, '2020-11-13 18:18:55');
 
@@ -67,6 +65,15 @@ CREATE TABLE `carts` (
   `send` decimal(10,2) NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `carts`
+--
+
+INSERT INTO `carts` (`id`, `state`, `user_id`, `product_id`, `quantity`, `discount`, `send`, `date`) VALUES
+(4, 1, 5, 3, '1.00', '0.99', '0.00', '2020-12-01 14:38:58'),
+(5, 1, 5, 2, '2.00', '1.00', '0.50', '2020-12-03 14:58:29'),
+(7, 1, 5, 5, '1.00', '1.99', '0.99', '2021-03-05 19:02:33');
 
 -- --------------------------------------------------------
 
@@ -214,7 +221,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT de la tabla `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `config`
