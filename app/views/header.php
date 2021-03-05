@@ -64,6 +64,30 @@
         <?php if($data['menu'] && (!isset($_SESSION['user']))) :?>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
+                <a href="<?= ROOT.'courses' ?>" class="nav-link
+                    <?= (isset($data['active']) && $data['active'] == 'courses') ? ' active' : '' ?>">
+                    Cursos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= ROOT.'books' ?>" class="nav-link
+                    <?= (isset($data['active']) && $data['active'] == 'books') ? ' active' : '' ?>">
+                    Libros
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= ROOT.'shop/whoami' ?>" class="nav-link
+                    <?= (isset($data['active']) && $data['active'] == 'whoami') ? ' active' : '' ?>">
+                    Quienes somos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="<?= ROOT.'shop/contact' ?>" class="nav-link
+                    <?= (isset($data['active']) && $data['active'] == 'contact') ? ' active' : '' ?>">
+                    Contacto
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="<?= ROOT.'login' ?>" class="nav-link">
                     Login
                 </a>
@@ -72,6 +96,15 @@
                 <a href="<?= ROOT.'login/registro' ?>" class="nav-link">
                     Registrarse
                 </a>
+            </li>
+        </ul>
+            <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <form action="<?= ROOT ?>search/products" class="form-inline" method="POST">
+                    <input type="text" name="search" id="search" class="form-control"
+                           size="20" placeholder="¿producto?" required>
+                    <button type="submit" class="btn btn-light"><i class="fas fa-search"></i></button>
+                </form>
             </li>
         </ul>
         <?php endif; ?>

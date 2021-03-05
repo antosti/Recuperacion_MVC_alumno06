@@ -12,7 +12,7 @@ class BooksController extends Controller
     public function index()
     {
         $session = new Session();
-        if ($session->getLogin()) {
+
             $books = $this->model->getBooks();
             $data = [
                 'titulo'    => 'Libros',
@@ -22,8 +22,6 @@ class BooksController extends Controller
                 'data'      => $books,
             ];
             $this->view('books/index', $data);
-        } else {
-            header('location:'. ROOT);
-        }
+
     }
 }

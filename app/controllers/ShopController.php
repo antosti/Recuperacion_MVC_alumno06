@@ -70,16 +70,13 @@ class ShopController extends Controller
     public function whoami()
     {
         $session = new Session();
-        if ($session->getLogin()) {
+
             $data = [
                 'titulo'    => 'Quienes somos',
                 'menu'      => true,
                 'active'    => 'whoami',
             ];
             $this->view('shop/whoami', $data);
-        } else {
-            header('location:' . ROOT);
-        }
     }
 
     public function contact()
@@ -143,16 +140,14 @@ class ShopController extends Controller
         } else {
             $session = new Session();
 
-            if ($session->getLogin()) {
+
                 $data = [
                     'titulo' => 'Contacta con nosotros',
                     'menu'   => true,
                     'active' => 'contact',
                 ];
                 $this->view('shop/contact', $data);
-            } else {
-                header('location:' . ROOT);
-            }
+
         }
     }
 }
